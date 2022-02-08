@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="078502fd-0e8b-4a9b-89a6-66c9faea1ae3" name="Changes" comment="added open and close browser">
+    <list default="true" id="078502fd-0e8b-4a9b-89a6-66c9faea1ae3" name="Changes" comment="first test with before and after structure">
       <change beforePath="$PROJECT_DIR$/src/test/java/junit/FirstJUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/junit/FirstJUnitTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -213,7 +213,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644347346541</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="first test with before and after structure">
+      <created>1644347841934</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1644347841934</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -248,6 +255,7 @@
     <MESSAGE value="added src directiry" />
     <MESSAGE value="added first junit test" />
     <MESSAGE value="added open and close browser" />
-    <option name="LAST_COMMIT_MESSAGE" value="added open and close browser" />
+    <MESSAGE value="first test with before and after structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="first test with before and after structure" />
   </component>
 </project>

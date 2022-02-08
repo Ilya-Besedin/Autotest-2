@@ -1,19 +1,27 @@
 package junit;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 public class FirstJUnitTest {
 
+    @BeforeAll
+    static void beforeAll() {
+        System.out.println("Этот метод выполняется перед всеми тестами");
+    }
+
     @BeforeEach
     void before() {
-        System.out.println("Этот метод выполняется перед каждым тестом");
+        System.out.println("    Этот метод выполняется перед каждым тестом");
     }
 
     @AfterEach
     void after () {
-        System.out.println("Этот метод выполняется после каждого теста");
+        System.out.println("    Этот метод выполняется после каждого теста");
+    }
+
+    @AfterAll
+    static void afterAll() {
+        System.out.println("Этот метод выполняется после всех тестов");
     }
 
     @Test
