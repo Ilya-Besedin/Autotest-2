@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="078502fd-0e8b-4a9b-89a6-66c9faea1ae3" name="Changes" comment="update .gitignore" />
+    <list default="true" id="078502fd-0e8b-4a9b-89a6-66c9faea1ae3" name="Changes" comment=".gitignore upadte check" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -9,6 +9,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -38,7 +39,21 @@
       <option name="project" value="LOCAL" />
       <updated>1644343038990</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="added idea files">
+      <created>1644343156671</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1644343156671</updated>
+    </task>
+    <task id="LOCAL-00003" summary=".gitignore upadte check">
+      <created>1644343401568</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1644343401568</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -66,6 +81,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update .gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="update .gitignore" />
+    <MESSAGE value="added idea files" />
+    <MESSAGE value=".gitignore upadte check" />
+    <option name="LAST_COMMIT_MESSAGE" value=".gitignore upadte check" />
   </component>
 </project>
