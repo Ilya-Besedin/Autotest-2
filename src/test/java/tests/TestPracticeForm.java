@@ -42,6 +42,10 @@ public class TestPracticeForm {
         $(".react-datepicker__month-select").selectOptionContainingText("June");
         $(".react-datepicker__day--014").click();
 
+        //прикрепляем файл
+        $("#uploadPicture").uploadFromClasspath("hello.txt");
+
+
         //кликаем Submit
         $("#submit").click();
 
