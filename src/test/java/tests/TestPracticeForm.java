@@ -21,7 +21,6 @@ public class TestPracticeForm {
         open("/automation-practice-form");
         $(".main-header").shouldHave(text("Practice form"));
 
-        //Часть 1. Проверка заполнения обязательных форм
         //заполняем текстовые формы
         $("#firstName").setValue("Ivan");
         $("#lastName").setValue("Leonov");
@@ -38,7 +37,7 @@ public class TestPracticeForm {
         //выбираем изучаемый предмет
         $("#subjectsInput").setValue("Economics").pressEnter();
 
-        //открываем дата-пикер
+        //дата-пикер
         $("#dateOfBirthInput").click();
         //выбираем даты
         $(".react-datepicker__year-select").selectOptionByValue("1999");
