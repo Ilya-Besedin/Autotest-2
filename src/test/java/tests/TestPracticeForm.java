@@ -23,7 +23,7 @@ public class TestPracticeForm {
 
         //Часть 1. Проверка заполнения обязательных форм
         //заполняем текстовые формы
-        $("#firstName").setValue("IvAn");
+        $("#firstName").setValue("Ivan");
         $("#lastName").setValue("123456");
         $("#userEmail").setValue("test@mail.com");
         $("#userNumber").setValue("0123456789");
@@ -43,11 +43,25 @@ public class TestPracticeForm {
         $(".react-datepicker__day--014").click();
 
         //прикрепляем файл
-        $("#uploadPicture").uploadFromClasspath("hello.txt");
+        $("#uploadPicture").uploadFromClasspath("JPEG.jpg");
+
+        //выбираем State and City
+        $("#submit").scrollIntoView(true);
+        $(byText("Select State")).click();
+        $(byText("Haryana")).click();
+        $(byText("Select City")).click();
+        $(byText("Karnal")).click();
 
 
         //кликаем Submit
         $("#submit").click();
+
+        //проверяем форму с результатом заполнения данных
+        $(".modal-header").shouldHave(text("Thanks for submitting the form"));
+        $(".table-responsive").shouldHave(text("Student Name Max Maximov"), text("Student Email test@mail.com"),
+                text("Gender Male"), text("Mobile 0123456789"), text("Date of Birth 24 February,1999"),
+                text("Subjects Hindi"), text("Hobbies Sports, Reading, Music"), text("Picture JPEG.jpg"),
+                text("Address New York, NY 10004, USA, 17 Broadway"), text("State and City Haryana Karnal"));
 
     }
 }
