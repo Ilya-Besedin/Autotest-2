@@ -36,8 +36,7 @@ public class TestPracticeForm {
         $(byText("Reading")).click();
 
         //выбираем изучаемый предмет
-        $("#subjectsContainer").setValue("ec");
-        $(byText("Economics")).click();
+        $("#subjectsInput").setValue("Economics").pressEnter();
 
         //открываем дата-пикер
         $("#dateOfBirthInput").click();
@@ -63,7 +62,7 @@ public class TestPracticeForm {
         $(".modal-header").shouldHave(text("Thanks for submitting the form"));
         $(".table-responsive").shouldHave(text("Student Name Ivan Leonov"), text("Student Email test@mail.com"),
                 text("Gender Male"), text("Mobile 0123456789"), text("Date of Birth 14 June,1999"),
-                text("Subjects"), text("Hobbies Sports, Reading, Music"), text("Picture JPEG.jpg"),
+                text("Subjects Economics"), text("Hobbies Sports, Music, Reading"), text("Picture JPEG.jpg"),
                 text("Address New York, NY 10004, USA, 17 Broadway"), text("State and City Haryana Karnal"));
 
     }
