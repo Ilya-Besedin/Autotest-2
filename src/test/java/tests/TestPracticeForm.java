@@ -8,42 +8,38 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static tests.TestData.*;
 
-public class TestPracticeForm {
-
-    @BeforeAll
-    static void beforeAll() {
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1280x800";
-    }
+public class TestPracticeForm extends TestBase {
 
     @Test
     void successFillTest() {
         open("/automation-practice-form");
-        $(".main-header").shouldHave(text("Practice form"));
+        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
 
         //заполняем текстовые формы
-        $("#firstName").setValue("Petr");
-        $("#lastName").setValue("Leonov");
-        $("#userEmail").setValue("test@mail.com");
-        $("#userNumber").setValue("0123456789");
-        $("#currentAddress").setValue("New York, NY 10004, USA, 17 Broadway");
+        $("#firstName").setValue(firstName);
+        $("#lastName").setValue(lastName);
+        $("#userEmail").setValue(email);
+        $("#userNumber").setValue(phone);
+        $("#currentAddress").setValue(address);
 
         //отмечаем радиобаттоны и чекбоксы
         $(byText("Male")).click();
-        $(byText("Sports")).click();
+        // $(byText("Sports")).click();
+        $("#hobbies-checkbox-1").parent().click(); //другой вариант записи строки выше
         $(byText("Music")).click();
         $(byText("Reading")).click();
 
         //выбираем изучаемый предмет
-        $("#subjectsInput").setValue("Economics").pressEnter();
+        $("#subjectsInput").setValue(subject).pressEnter();
 
         //дата-пикер
         $("#dateOfBirthInput").click();
         //выбираем даты
         $(".react-datepicker__year-select").selectOptionByValue("1999");
         $(".react-datepicker__month-select").selectOptionContainingText("June");
-        $(".react-datepicker__day--014").click();
+        $(".react-datepicker__day--014:not(.react-datepicker__day--outside-month)").click(); //исключили повторяющиеся даты вне месяца
 
         //прикрепляем файл
         $("#uploadPicture").uploadFromClasspath("JPEG.jpg");
