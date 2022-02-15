@@ -5,8 +5,7 @@ import pages.RegistrationPages;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 import static tests.TestData.*;
 
 public class RegistrationFormTestsWithPageObject extends TestBase {
@@ -52,13 +51,21 @@ public class RegistrationFormTestsWithPageObject extends TestBase {
 
         //кликаем Submit
         $("#submit").click();
+        //sleep(10000000000000L);
 
         //проверяем форму с результатом заполнения данных
         $(".modal-header").shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(text("Student Name Petr Leonov"), text("Student Email test@mail.com"),
-                text("Gender Male"), text("Mobile 0123456789"), text("Date of Birth 14 June,1999"),
-                text("Subjects Economics"), text("Hobbies Sports, Music, Reading"), text("Picture JPEG.jpg"),
-                text("Address New York, NY 10004, USA, 17 Broadway"), text("State and City Haryana Karnal"));
+
+        new RegistrationPages().checkForm("Student Name", firstName + ' ' + lastName);
+        new RegistrationPages().checkForm("Student Email", email);
+        new RegistrationPages().checkForm("Gender", "Male");
+        new RegistrationPages().checkForm("Mobile", phone);
+        new RegistrationPages().checkForm("Date of Birth", "14 June,1999");
+        new RegistrationPages().checkForm("Subjects", "Economics");
+        new RegistrationPages().checkForm("Hobbies", "Sports, Music, Reading");
+        new RegistrationPages().checkForm("Picture", "JPEG.jpg");
+        new RegistrationPages().checkForm("Address", address);
+        new RegistrationPages().checkForm("State and City", "Haryana Karnal");
 
     }
 }

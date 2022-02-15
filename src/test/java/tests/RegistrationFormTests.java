@@ -54,7 +54,9 @@ public class RegistrationFormTests extends TestBase {
 
         //проверяем форму с результатом заполнения данных
         $(".modal-header").shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(text("Student Name Petr Leonov"), text("Student Email test@mail.com"),
+        $(".table-responsive").$(byText("Student Name"))
+                .parent().shouldHave(text(firstName + ' ' + lastName));
+        $(".table-responsive").shouldHave( text("Student Email test@mail.com"),
                 text("Gender Male"), text("Mobile 0123456789"), text("Date of Birth 14 June,1999"),
                 text("Subjects Economics"), text("Hobbies Sports, Music, Reading"), text("Picture JPEG.jpg"),
                 text("Address New York, NY 10004, USA, 17 Broadway"), text("State and City Haryana Karnal"));
