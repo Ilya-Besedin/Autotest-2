@@ -1,7 +1,6 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
-import org.w3c.dom.Text;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -10,50 +9,61 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class RegistrationPage {
 
-    // проверка открытия главной
-    public void openPage() {
-        open("/automation-practice-form");
-        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
-    }
-
-
     // locators
-    SelenideElement firstNameInput = $("#firstName");
-    SelenideElement lastNameInput = $("#lastName");
-    SelenideElement userEmailInput = $("#userEmail");
-    SelenideElement userNumberInput = $("#userNumber");
-    SelenideElement currentAddressInput = $("#currentAddress");
-    SelenideElement resultsTable = $(".table-responsive");
-    SelenideElement resultTableHeader =  $(".modal-header");
+    private SelenideElement
+            firstNameInput = $("#firstName"),
+            lastNameInput = $("#lastName"),
+            userEmailInput = $("#userEmail"),
+            userNumberInput = $("#userNumber"),
+            currentAddressInput = $("#currentAddress"),
+            resultsTable = $(".table-responsive"),
+            practiceFormHeader = $(".practice-form-wrapper"),
+            resultTableHeader = $(".modal-header");
 
     // actions
-    public void setFirstName(String firstName) {
+    public RegistrationPage openPage() {
+        open("/automation-practice-form");
+        practiceFormHeader.shouldHave(text("Student Registration Form"));
+
+        return this;
+    }
+    public RegistrationPage setFirstName(String firstName) {
         firstNameInput.setValue(firstName);
+
+        return this;
     }
 
-    public void setLastName(String lastName) {
+    public RegistrationPage setLastName(String lastName) {
         lastNameInput.setValue(lastName);
+
+        return this;
     }
 
-    public void setUserEmail(String userEmail) {
+    public RegistrationPage setUserEmail(String userEmail) {
         userEmailInput.setValue(userEmail);
+
+        return this;
     }
 
-    public void setUserNumber(String userNumber) {
+    public RegistrationPage setUserNumber(String userNumber) {
         userNumberInput.setValue(userNumber);
+
+        return this;
     }
+
     public void setCurrentAddress(String currentAddress) {
         currentAddressInput.setValue(currentAddress);
+
     }
-    public void checkOpenTable(String header) {
-        resultTableHeader.$(byText (header));
+
+    public void checkOpenTable(String tableHeader) {
+        resultTableHeader.$(byText(tableHeader));
     }
+
     public void checkTable(String fieldName, String value) {
-        resultsTable.$(byText (fieldName))
+        resultsTable.$(byText(fieldName))
                 .parent().shouldHave(text(value));
     }
-
-
 
 
 }

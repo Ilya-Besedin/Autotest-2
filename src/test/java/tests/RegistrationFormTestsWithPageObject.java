@@ -16,15 +16,13 @@ public class RegistrationFormTestsWithPageObject extends TestBase {
     @Test
     void successFillTest() {
 
-        //открываем страницу
-        registrationPage.openPage();
-
-        //заполняем текстовые формы
-        registrationPage.setFirstName(firstName);
-        registrationPage.setLastName(lastName);
-        registrationPage.setUserEmail(email);
-        registrationPage.setUserNumber(phone);
-        registrationPage.setCurrentAddress(address);
+        //открываем страницу и заполняем имя (используется вызов RegistrationPage после открытия страницы)
+        registrationPage.openPage()
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .setUserEmail(email)
+                .setUserNumber(phone)
+                .setCurrentAddress(address);
 
         //отмечаем радиобаттоны и чекбоксы
         $(byText("Male")).click();
@@ -58,7 +56,7 @@ public class RegistrationFormTestsWithPageObject extends TestBase {
         //sleep(10000000000000L);
 
         //проверяем форму с результатом заполнения данных
-        registrationPage.checkOpenTable("Thanks for submitting the form");
+        registrationPage.checkOpenTable(tableHeader);
         registrationPage.checkTable("Student Name", firstName + ' ' + lastName);
         registrationPage.checkTable("Student Email", email);
         registrationPage.checkTable("Gender", "Male");

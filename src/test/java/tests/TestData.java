@@ -2,6 +2,7 @@ package tests;
 
 public class TestData {
     public static String
+            tableHeader = "Thanks for submitting the form",
             firstName = "Petr",
             lastName = "Leonov",
             email = "test@mail.com",
