@@ -1,14 +1,21 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import org.w3c.dom.Text;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
-import static tests.TestData.firstName;
-import static tests.TestData.lastName;
+import static com.codeborne.selenide.Selenide.open;
 
-public class RegistrationPages {
+public class RegistrationPage {
+
+    // проверка открытия главной
+    public void openPage() {
+        open("/automation-practice-form");
+        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+    }
+
 
     // locators
     SelenideElement firstNameInput = $("#firstName");
@@ -17,6 +24,7 @@ public class RegistrationPages {
     SelenideElement userNumberInput = $("#userNumber");
     SelenideElement currentAddressInput = $("#currentAddress");
     SelenideElement resultsTable = $(".table-responsive");
+    SelenideElement resultTableHeader =  $(".modal-header");
 
     // actions
     public void setFirstName(String firstName) {
@@ -37,8 +45,10 @@ public class RegistrationPages {
     public void setCurrentAddress(String currentAddress) {
         currentAddressInput.setValue(currentAddress);
     }
-
-    public void checkForm(String fieldName, String value) {
+    public void checkOpenTable(String header) {
+        resultTableHeader.$(byText (header));
+    }
+    public void checkTable(String fieldName, String value) {
         resultsTable.$(byText (fieldName))
                 .parent().shouldHave(text(value));
     }

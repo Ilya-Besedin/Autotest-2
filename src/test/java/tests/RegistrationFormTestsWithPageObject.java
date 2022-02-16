@@ -1,7 +1,7 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
-import pages.RegistrationPages;
+import pages.RegistrationPage;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -10,17 +10,21 @@ import static tests.TestData.*;
 
 public class RegistrationFormTestsWithPageObject extends TestBase {
 
+    //первая часть - тип переменной, вторая - переменная, третья - фукнция
+    RegistrationPage registrationPage = new RegistrationPage();
+
     @Test
     void successFillTest() {
-        open("/automation-practice-form");
-        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+
+        //открываем страницу
+        registrationPage.openPage();
 
         //заполняем текстовые формы
-        new RegistrationPages().setFirstName(firstName);
-        new RegistrationPages().setLastName(lastName);
-        new RegistrationPages().setUserEmail(email);
-        new RegistrationPages().setUserNumber(phone);
-        new RegistrationPages().setCurrentAddress(address);
+        registrationPage.setFirstName(firstName);
+        registrationPage.setLastName(lastName);
+        registrationPage.setUserEmail(email);
+        registrationPage.setUserNumber(phone);
+        registrationPage.setCurrentAddress(address);
 
         //отмечаем радиобаттоны и чекбоксы
         $(byText("Male")).click();
@@ -54,18 +58,17 @@ public class RegistrationFormTestsWithPageObject extends TestBase {
         //sleep(10000000000000L);
 
         //проверяем форму с результатом заполнения данных
-        $(".modal-header").shouldHave(text("Thanks for submitting the form"));
-
-        new RegistrationPages().checkForm("Student Name", firstName + ' ' + lastName);
-        new RegistrationPages().checkForm("Student Email", email);
-        new RegistrationPages().checkForm("Gender", "Male");
-        new RegistrationPages().checkForm("Mobile", phone);
-        new RegistrationPages().checkForm("Date of Birth", "14 June,1999");
-        new RegistrationPages().checkForm("Subjects", "Economics");
-        new RegistrationPages().checkForm("Hobbies", "Sports, Music, Reading");
-        new RegistrationPages().checkForm("Picture", "JPEG.jpg");
-        new RegistrationPages().checkForm("Address", address);
-        new RegistrationPages().checkForm("State and City", "Haryana Karnal");
+        registrationPage.checkOpenTable("Thanks for submitting the form");
+        registrationPage.checkTable("Student Name", firstName + ' ' + lastName);
+        registrationPage.checkTable("Student Email", email);
+        registrationPage.checkTable("Gender", "Male");
+        registrationPage.checkTable("Mobile", phone);
+        registrationPage.checkTable("Date of Birth", "14 June,1999");
+        registrationPage.checkTable("Subjects", "Economics");
+        registrationPage.checkTable("Hobbies", "Sports, Music, Reading");
+        registrationPage.checkTable("Picture", "JPEG.jpg");
+        registrationPage.checkTable("Address", address);
+        registrationPage.checkTable("State and City", "Haryana Karnal");
 
     }
 }
