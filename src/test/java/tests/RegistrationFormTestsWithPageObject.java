@@ -3,7 +3,6 @@ package tests;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static tests.TestData.*;
@@ -16,8 +15,10 @@ public class RegistrationFormTestsWithPageObject extends TestBase {
     @Test
     void successFillTest() {
 
-        //открываем страницу и заполняем имя (используется вызов RegistrationPage после открытия страницы)
-        registrationPage.openPage()
+        //открываем страницу и заполняем текстовые поля
+        //используется вызов registrationPage после выполнения метода open page
+        registrationPage
+                .openPage()
                 .setFirstName(firstName)
                 .setLastName(lastName)
                 .setUserEmail(email)
@@ -26,20 +27,16 @@ public class RegistrationFormTestsWithPageObject extends TestBase {
 
         //отмечаем радиобаттоны и чекбоксы
         $(byText("Male")).click();
-        // $(byText("Sports")).click();
-        $("#hobbies-checkbox-1").parent().click(); //другой вариант записи строки выше
+        $(byText("Sports")).click();
+        //другой вариант записи строки выше
+        //$("#hobbies-checkbox-1").parent().click();
         $(byText("Music")).click();
         $(byText("Reading")).click();
 
         //выбираем изучаемый предмет
         $("#subjectsInput").setValue(subject).pressEnter();
 
-        //дата-пикер
-        $("#dateOfBirthInput").click();
-        //выбираем даты
-        $(".react-datepicker__year-select").selectOptionByValue("1999");
-        $(".react-datepicker__month-select").selectOptionContainingText("June");
-        $(".react-datepicker__day--014:not(.react-datepicker__day--outside-month)").click(); //исключили повторяющиеся даты вне месяца
+        registrationPage.setBirthDate("14", "June", "1999");
 
         //прикрепляем файл
         $("#uploadPicture").uploadFromClasspath("JPEG.jpg");
@@ -56,17 +53,17 @@ public class RegistrationFormTestsWithPageObject extends TestBase {
         //sleep(10000000000000L);
 
         //проверяем форму с результатом заполнения данных
-        registrationPage.checkOpenTable(tableHeader);
-        registrationPage.checkTable("Student Name", firstName + ' ' + lastName);
-        registrationPage.checkTable("Student Email", email);
-        registrationPage.checkTable("Gender", "Male");
-        registrationPage.checkTable("Mobile", phone);
-        registrationPage.checkTable("Date of Birth", "14 June,1999");
-        registrationPage.checkTable("Subjects", "Economics");
-        registrationPage.checkTable("Hobbies", "Sports, Music, Reading");
-        registrationPage.checkTable("Picture", "JPEG.jpg");
-        registrationPage.checkTable("Address", address);
-        registrationPage.checkTable("State and City", "Haryana Karnal");
-
+        registrationPage
+                .checkOpenTable(tableHeader)
+                .checkTable("Student Name", firstName + ' ' + lastName)
+                .checkTable("Student Email", email)
+                .checkTable("Gender", "Male")
+                .checkTable("Mobile", phone)
+                .checkTable("Date of Birth", "14 June,1999")
+                .checkTable("Subjects", "Economics")
+                .checkTable("Hobbies", "Sports, Music, Reading")
+                .checkTable("Picture", "JPEG.jpg")
+                .checkTable("Address", address)
+                .checkTable("State and City", "Haryana Karnal");
     }
 }
