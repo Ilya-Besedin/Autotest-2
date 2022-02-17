@@ -1,13 +1,18 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import pages.components.CalendarComponent;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static tests.TestData.*;
 
 public class RegistrationPage {
+
+    //components
+    CalendarComponent calendarComponent = new CalendarComponent();
 
     // locators
     private final SelenideElement
@@ -16,6 +21,7 @@ public class RegistrationPage {
             userEmailInput = $("#userEmail"),
             userNumberInput = $("#userNumber"),
             currentAddressInput = $("#currentAddress"),
+            genderInput = $(byText(gender)),
             resultsTable = $(".table-responsive"),
             practiceFormHeader = $(".practice-form-wrapper"),
             resultsTableHeader = $(".modal-header");
@@ -46,19 +52,20 @@ public class RegistrationPage {
         return this;
     }
 
-    public void setCurrentAddress(String currentAddress) {
+    public RegistrationPage setCurrentAddress(String currentAddress) {
         currentAddressInput.setValue(currentAddress);
-
+        return this;
     }
 
-    public void setBirthDate(String day, String month, String year){
-        //дата-пикер
+    public RegistrationPage setGender(){
+        genderInput.click();
+        return this;
+    }
+
+    public RegistrationPage setBirthDate(String day, String month, String year){
         $("#dateOfBirthInput").click();
-        //выбираем даты
-        $(".react-datepicker__year-select").selectOptionByValue(year);
-        $(".react-datepicker__month-select").selectOptionContainingText(month);
-        //исключили повторяющиеся даты вне месяца, указав not(.react-datepicker__day--outside-month)
-        $(".react-datepicker__day--0" + day + ":not(.react-datepicker__day--outside-month)").click();
+        calendarComponent.setDate(day, month, year);
+        return this;
     }
 
     public RegistrationPage checkOpenTable(String tableHeader) {

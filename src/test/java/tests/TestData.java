@@ -8,5 +8,9 @@ public class TestData {
             email = "test@mail.com",
             phone = "0123456789",
             address = "New York, NY 10004, USA, 17 Broadway",
+            gender = "Male",
+            day = "14",
+            month = "June",
+            year = "1999",
             subject = "Economics";
 }

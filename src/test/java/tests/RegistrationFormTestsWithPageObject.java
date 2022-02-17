@@ -23,10 +23,11 @@ public class RegistrationFormTestsWithPageObject extends TestBase {
                 .setLastName(lastName)
                 .setUserEmail(email)
                 .setUserNumber(phone)
-                .setCurrentAddress(address);
+                .setCurrentAddress(address)
+                .setBirthDate(day, month, year)
+                .setGender();
 
         //отмечаем радиобаттоны и чекбоксы
-        $(byText("Male")).click();
         $(byText("Sports")).click();
         //другой вариант записи строки выше
         //$("#hobbies-checkbox-1").parent().click();
@@ -35,8 +36,6 @@ public class RegistrationFormTestsWithPageObject extends TestBase {
 
         //выбираем изучаемый предмет
         $("#subjectsInput").setValue(subject).pressEnter();
-
-        registrationPage.setBirthDate("14", "June", "1999");
 
         //прикрепляем файл
         $("#uploadPicture").uploadFromClasspath("JPEG.jpg");
@@ -50,17 +49,17 @@ public class RegistrationFormTestsWithPageObject extends TestBase {
 
         //кликаем Submit
         $("#submit").click();
-        //sleep(10000000000000L);
+        //sleep(10000);
 
         //проверяем форму с результатом заполнения данных
         registrationPage
                 .checkOpenTable(tableHeader)
                 .checkTable("Student Name", firstName + ' ' + lastName)
                 .checkTable("Student Email", email)
-                .checkTable("Gender", "Male")
+                .checkTable("Gender", gender)
                 .checkTable("Mobile", phone)
-                .checkTable("Date of Birth", "14 June,1999")
-                .checkTable("Subjects", "Economics")
+                .checkTable("Date of Birth", day + ' ' + month + ',' + year)
+                .checkTable("Subjects", subject)
                 .checkTable("Hobbies", "Sports, Music, Reading")
                 .checkTable("Picture", "JPEG.jpg")
                 .checkTable("Address", address)
