@@ -12,5 +12,9 @@ public class TestData {
             day = "14",
             month = "June",
             year = "1999",
+            hobbies = "Music",
+            attach = "JPEG.jpg",
+            state = "Haryana",
+            city = "Karnal",
             subject = "Economics";
 }
