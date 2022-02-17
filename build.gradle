@@ -22,7 +22,7 @@ dependencies {
     )
 }
 
-tasks.withType(JavaCompile) {
+compileTestJava {
     options.encoding = 'UTF-8'
 }
 
