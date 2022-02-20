@@ -30,6 +30,7 @@ public class RegistrationPage {
             resultsTable = $(".table-responsive"),
             submitButton = $("#submit"),
             practiceFormHeader = $(".practice-form-wrapper"),
+            calendarOpen = $("#dateOfBirthInput"),
             resultsTableHeader = $(".modal-header");
 
     // actions
@@ -80,7 +81,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setBirthDate(String day, String month, String year){
-        $("#dateOfBirthInput").click();
+        calendarOpen.click();
         calendarComponent.setDate(day, month, year);
         return this;
     }
